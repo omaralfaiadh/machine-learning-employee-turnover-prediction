@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="0mar abdulazeez">
+    <Application name="KNIME" version="5.3.1"/>
+  </Header>
+  <DataDictionary numberOfFields="10">
+    <DataField name="satisfaction_level" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="last_performance_rating" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="number_of_projects" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="avg_monthly_hours" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="years_at_company" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="had_work_accident" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="has_left_company" optype="categorical" dataType="string">
+      <Value value="1.0"/>
+      <Value value="0.0"/>
+    </DataField>
+    <DataField name="promoted_in_last_5_years" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Department" optype="categorical" dataType="string">
+      <Value value="sales"/>
+      <Value value="accounting"/>
+      <Value value="hr"/>
+      <Value value="technical"/>
+      <Value value="support"/>
+      <Value value="management"/>
+      <Value value="IT"/>
+      <Value value="product_mng"/>
+      <Value value="marketing"/>
+      <Value value="RandD"/>
+    </DataField>
+    <DataField name="salary_level" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+  </DataDictionary>
+  <TreeModel modelName="DecisionTree" functionName="classification" splitCharacteristic="binarySplit" missingValueStrategy="lastPrediction" noTrueChildStrategy="returnNullPrediction">
+    <MiningSchema>
+      <MiningField name="satisfaction_level" invalidValueTreatment="asIs"/>
+      <MiningField name="last_performance_rating" invalidValueTreatment="asIs"/>
+      <MiningField name="number_of_projects" invalidValueTreatment="asIs"/>
+      <MiningField name="avg_monthly_hours" invalidValueTreatment="asIs"/>
+      <MiningField name="years_at_company" invalidValueTreatment="asIs"/>
+      <MiningField name="had_work_accident" invalidValueTreatment="asIs"/>
+      <MiningField name="promoted_in_last_5_years" invalidValueTreatment="asIs"/>
+      <MiningField name="Department" invalidValueTreatment="asIs"/>
+      <MiningField name="salary_level" invalidValueTreatment="asIs"/>
+      <MiningField name="has_left_company" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <Node id="0" score="1.0" recordCount="15998.0">
+      <True/>
+      <ScoreDistribution value="1.0" recordCount="7999.0"/>
+      <ScoreDistribution value="0.0" recordCount="7999.0"/>
+      <Node id="1" score="1.0" recordCount="6806.0">
+        <SimplePredicate field="satisfaction_level" operator="lessOrEqual" value="0.4171814469854518"/>
+        <ScoreDistribution value="1.0" recordCount="5746.0"/>
+        <ScoreDistribution value="0.0" recordCount="1060.0"/>
+        <Node id="3" score="1.0" recordCount="3734.0">
+          <SimplePredicate field="number_of_projects" operator="lessOrEqual" value="0.1987462082013377"/>
+          <ScoreDistribution value="1.0" recordCount="3598.0"/>
+          <ScoreDistribution value="0.0" recordCount="136.0"/>
+        </Node>
+        <Node id="9" score="1.0" recordCount="3072.0">
+          <SimplePredicate field="number_of_projects" operator="greaterThan" value="0.1987462082013377"/>
+          <ScoreDistribution value="1.0" recordCount="2148.0"/>
+          <ScoreDistribution value="0.0" recordCount="924.0"/>
+          <Node id="11" score="1.0" recordCount="1743.0">
+            <SimplePredicate field="satisfaction_level" operator="lessOrEqual" value="0.03249477552066522"/>
+            <ScoreDistribution value="1.0" recordCount="1743.0"/>
+            <ScoreDistribution value="0.0" recordCount="0.0"/>
+          </Node>
+          <Node id="12" score="0.0" recordCount="1329.0">
+            <SimplePredicate field="satisfaction_level" operator="greaterThan" value="0.03249477552066522"/>
+            <ScoreDistribution value="1.0" recordCount="405.0"/>
+            <ScoreDistribution value="0.0" recordCount="924.0"/>
+          </Node>
+        </Node>
+      </Node>
+      <Node id="2" score="0.0" recordCount="9192.0">
+        <SimplePredicate field="satisfaction_level" operator="greaterThan" value="0.4171814469854518"/>
+        <ScoreDistribution value="1.0" recordCount="2253.0"/>
+        <ScoreDistribution value="0.0" recordCount="6939.0"/>
+        <Node id="4" score="0.0" recordCount="6508.0">
+          <SimplePredicate field="years_at_company" operator="lessOrEqual" value="0.2501817573741612"/>
+          <ScoreDistribution value="1.0" recordCount="313.0"/>
+          <ScoreDistribution value="0.0" recordCount="6195.0"/>
+        </Node>
+        <Node id="20" score="1.0" recordCount="2684.0">
+          <SimplePredicate field="years_at_company" operator="greaterThan" value="0.2501817573741612"/>
+          <ScoreDistribution value="1.0" recordCount="1940.0"/>
+          <ScoreDistribution value="0.0" recordCount="744.0"/>
+          <Node id="21" score="0.0" recordCount="928.0">
+            <SimplePredicate field="last_performance_rating" operator="lessOrEqual" value="0.7500455391138855"/>
+            <ScoreDistribution value="1.0" recordCount="380.0"/>
+            <ScoreDistribution value="0.0" recordCount="548.0"/>
+          </Node>
+          <Node id="22" score="1.0" recordCount="1756.0">
+            <SimplePredicate field="last_performance_rating" operator="greaterThan" value="0.7500455391138855"/>
+            <ScoreDistribution value="1.0" recordCount="1560.0"/>
+            <ScoreDistribution value="0.0" recordCount="196.0"/>
+          </Node>
+        </Node>
+      </Node>
+    </Node>
+  </TreeModel>
+</PMML>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="0mar abdulazeez">
+    <Application name="KNIME" version="5.3.1"/>
+  </Header>
+  <DataDictionary numberOfFields="10">
+    <DataField name="satisfaction_level" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="last_performance_rating" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="number_of_projects" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="avg_monthly_hours" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="years_at_company" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="had_work_accident" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="has_left_company" optype="categorical" dataType="string">
+      <Value value="1.0"/>
+      <Value value="0.0"/>
+    </DataField>
+    <DataField name="promoted_in_last_5_years" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="Department" optype="categorical" dataType="string">
+      <Value value="sales"/>
+      <Value value="accounting"/>
+      <Value value="hr"/>
+      <Value value="technical"/>
+      <Value value="support"/>
+      <Value value="management"/>
+      <Value value="IT"/>
+      <Value value="product_mng"/>
+      <Value value="marketing"/>
+      <Value value="RandD"/>
+    </DataField>
+    <DataField name="salary_level" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+  </DataDictionary>
+  <GeneralRegressionModel modelType="multinomialLogistic" functionName="classification" algorithmName="LogisticRegression" modelName="KNIME Logistic Regression" targetReferenceCategory="0.0">
+    <MiningSchema>
+      <MiningField name="satisfaction_level" invalidValueTreatment="asIs"/>
+      <MiningField name="last_performance_rating" invalidValueTreatment="asIs"/>
+      <MiningField name="number_of_projects" invalidValueTreatment="asIs"/>
+      <MiningField name="avg_monthly_hours" invalidValueTreatment="asIs"/>
+      <MiningField name="years_at_company" invalidValueTreatment="asIs"/>
+      <MiningField name="had_work_accident" invalidValueTreatment="asIs"/>
+      <MiningField name="promoted_in_last_5_years" invalidValueTreatment="asIs"/>
+      <MiningField name="Department" invalidValueTreatment="asIs"/>
+      <MiningField name="salary_level" invalidValueTreatment="asIs"/>
+      <MiningField name="has_left_company" invalidValueTreatment="asIs" usageType="target"/>
+    </MiningSchema>
+    <ParameterList>
+      <Parameter name="p0" label="Intercept"/>
+      <Parameter name="p1" label="satisfaction_level"/>
+      <Parameter name="p2" label="last_performance_rating"/>
+      <Parameter name="p3" label="number_of_projects"/>
+      <Parameter name="p4" label="avg_monthly_hours"/>
+      <Parameter name="p5" label="years_at_company"/>
+      <Parameter name="p6" label="had_work_accident"/>
+      <Parameter name="p7" label="promoted_in_last_5_years"/>
+      <Parameter name="p8" label="[Department=RandD]"/>
+      <Parameter name="p9" label="[Department=accounting]"/>
+      <Parameter name="p10" label="[Department=hr]"/>
+      <Parameter name="p11" label="[Department=management]"/>
+      <Parameter name="p12" label="[Department=marketing]"/>
+      <Parameter name="p13" label="[Department=product_mng]"/>
+      <Parameter name="p14" label="[Department=sales]"/>
+      <Parameter name="p15" label="[Department=support]"/>
+      <Parameter name="p16" label="[Department=technical]"/>
+      <Parameter name="p17" label="salary_level"/>
+    </ParameterList>
+    <FactorList>
+      <Predictor name="Department"/>
+    </FactorList>
+    <CovariateList>
+      <Predictor name="satisfaction_level"/>
+      <Predictor name="last_performance_rating"/>
+      <Predictor name="number_of_projects"/>
+      <Predictor name="avg_monthly_hours"/>
+      <Predictor name="years_at_company"/>
+      <Predictor name="had_work_accident"/>
+      <Predictor name="promoted_in_last_5_years"/>
+      <Predictor name="salary_level"/>
+    </CovariateList>
+    <PPMatrix>
+      <PPCell value="1" predictorName="satisfaction_level" parameterName="p1"/>
+      <PPCell value="1" predictorName="last_performance_rating" parameterName="p2"/>
+      <PPCell value="1" predictorName="number_of_projects" parameterName="p3"/>
+      <PPCell value="1" predictorName="avg_monthly_hours" parameterName="p4"/>
+      <PPCell value="1" predictorName="years_at_company" parameterName="p5"/>
+      <PPCell value="1" predictorName="had_work_accident" parameterName="p6"/>
+      <PPCell value="1" predictorName="promoted_in_last_5_years" parameterName="p7"/>
+      <PPCell value="RandD" predictorName="Department" parameterName="p8"/>
+      <PPCell value="accounting" predictorName="Department" parameterName="p9"/>
+      <PPCell value="hr" predictorName="Department" parameterName="p10"/>
+      <PPCell value="management" predictorName="Department" parameterName="p11"/>
+      <PPCell value="marketing" predictorName="Department" parameterName="p12"/>
+      <PPCell value="product_mng" predictorName="Department" parameterName="p13"/>
+      <PPCell value="sales" predictorName="Department" parameterName="p14"/>
+      <PPCell value="support" predictorName="Department" parameterName="p15"/>
+      <PPCell value="technical" predictorName="Department" parameterName="p16"/>
+      <PPCell value="1" predictorName="salary_level" parameterName="p17"/>
+    </PPMatrix>
+    <ParamMatrix>
+      <PCell targetCategory="1.0" parameterName="p0" beta="1.7597242567566387" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p1" beta="-4.413704484587324" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p2" beta="0.8357475224912607" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p3" beta="-2.3094365956417033" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p4" beta="1.001538696355848" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p5" beta="3.855222128809763" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p6" beta="-1.6432700851519078" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p7" beta="-1.6390375564975537" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p8" beta="-0.4116589468988802" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p9" beta="0.10316756633139201" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p10" beta="0.3565812734026083" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p11" beta="-0.6819180566480136" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p12" beta="0.10180209065036148" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p13" beta="0.054606776800382714" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p14" beta="0.09846898169009874" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p15" beta="0.16710113162108542" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p16" beta="0.20965277630663132" df="1"/>
+      <PCell targetCategory="1.0" parameterName="p17" beta="-1.538446646255199" df="1"/>
+    </ParamMatrix>
+  </GeneralRegressionModel>
+</PMML>
